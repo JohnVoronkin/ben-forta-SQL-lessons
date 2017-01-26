@@ -1,41 +1,46 @@
-﻿/*
-ORDER BY - сортировка данных столбца в алфавитном порядке
+﻿---ФИЛЬТРАЦИЯ ДАННЫХ
+/*
+В инструкции SELECT данные фильтруются путем указания критерии отбора в предложении
+WHERE, указывается сразу после названия таблицы.
+ORDER BY - следует сразу за WHERE.
 */
-SELECT prod_name
+SELECT prod_name, prod_price
 FROM Products
-ORDER BY prod_name; -- данные по умолчанию сортируются по возрастанию
+WHERE prod_price = 3.49;
 
 /*
-Сортировка по нескольким столбцам.
-Товары сортируются по столбцу prod_name, только если существует несколько строк с одинаковыми значениями
-prod_price. Если никакие значения столбца prod_price не совпадают, данные по столбцу prod_name
-сортироваться не будут
-Результат сортируется по двум колонкам - сначала - по цене, потом - по названию.
+~ Операторы WHERE:
+= - Равенство;
+<> - Неравенство;
+!= - Неравенство;
+< - Меньше;
+<= - Меньше или равно;
+!< - Не меньше;
+> - Больше;
+>= - Больше или равно;
+!> - Не больше;
+BETWEEN - Вхождение в диапозон;
+IS NULL - Значение NULL;
 */
-SELECT prod_id, prod_price, prod_name
-FROM Products
-ORDER BY prod_price, prod_name;
 
-
-/*
-Сортировка по положению столбца в оператора SELECT
-*/
-SELECT prod_id, prod_price, prod_name
+SELECT prod_name, prod_price
 FROM Products
-ORDER BY 2,3;
+WHERE prod_price <= 10;
 
-/*
-Сортировка данных по убыванию
-DESC(ENDING) - по убыванию - применяется к тому столбцу, после которого оно стоит.
-ASC(ENDING) - по возрастанию (дефолтная сортировка).
-*/
-SELECT prod_id, prod_price, prod_name
+-- Выводим товары не изготовленные фирмой "DLL01"
+SELECT prod_name, prod_price, vend_id
 FROM Products
-ORDER BY prod_price DESC;
+WHERE vend_id <> 'DLL01'; -- одинарные кавычки служат для определения границ строки.
 
 /*
-Сортировка данных по убыванию по нескольким столбцам
+ Для BETWEEN обязательно два значения Начальное и Конечное - нижняя и верхняя граница диапозона;
+ Диапазон должен разделен оператором AND. Значения извлекаются включая граничные значения.
 */
-SELECT prod_id, prod_price, prod_name
+SELECT prod_name, prod_price, vend_id
 FROM Products
-ORDER BY prod_price DESC, prod_name DESC;
+WHERE prod_price BETWEEN 5 AND 10;
+
+--IS NULL
+SELECT cust_name, cust_email
+FROM Customers
+WHERE cust_email IS NULL;
