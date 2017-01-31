@@ -1,4 +1,6 @@
-﻿SELECT prod_id, vend_id, prod_name, prod_price
+﻿---ИЗВЛЕЧЕНИЕ ДАННЫХ ИЗ ТАБЛИЦ
+
+SELECT prod_id, vend_id, prod_name, prod_price
 FROM Products;
 
 /*
