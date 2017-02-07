@@ -27,3 +27,33 @@ ORDER BY vend_name;
 ------------------------------
 --ИСПОЛЬЗОВАНИЕ ПСЕВДОНИМОВ--
 ------------------------------
+/*Псевдоним (производные столбцы) это альтернативное имя для поля или значения. 
+Присваиваются с помощью ключевого слова AS
+*/
+SELECT rtrim(vend_name) || ' (' || rtrim(vend_country) || ')' AS vend_title
+FROM Vendors
+ORDER BY vend_name;
+
+------------------------------
+--МАТЕМАТИЧЕСКИЕ ВЫЧИСЛЕНИЯ---
+------------------------------
+SELECT prod_id, 
+    quantity, 
+    item_price,
+    quantity * item_price AS expanded_price -- expanded_price - в данном случае это вычисляемое поле
+    
+FROM orderitems
+WHERE order_num = 20008;
+
+
+/*МАТЕМАТИЧЕСКИЕ ОПЕРАТОРЫ в SQL
++ - Сложение
+- - Вычитание
+* - Умножение
+/ - Деление
+*/
+
+SELECT trim('   abd     ') || '/' || ltrim('    123     ');
+
+
+
