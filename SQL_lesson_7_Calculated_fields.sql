@@ -52,7 +52,6 @@ WHERE order_num = 20008;
 * - Умножение
 / - Деление
 */
-
 SELECT trim('   abd     ') || '/' || ltrim('    123     ');
 
 
